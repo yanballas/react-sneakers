@@ -1,5 +1,5 @@
 import Header from "./components/Header/Header";
-import ProductCard from "./components/ProductCard/ProductCard";
+import ProductCard from "./components/ProductCard";
 import ShopCart from "./components/ShopCart/ShopCart";
 
 const infoProductCards = [
@@ -41,7 +41,12 @@ function App() {
         <ul className="tmpl--main-cards">
           {
             infoProductCards.map((el) => (
-              <ProductCard title={el.title} price={el.price} imageUrl={el.imageUrl} />
+              <ProductCard 
+              title={el.title} 
+              price={el.price} 
+              imageUrl={el.imageUrl} 
+              onClick={() => console.log(el)} 
+              />
             ))
           }
         </ul>
