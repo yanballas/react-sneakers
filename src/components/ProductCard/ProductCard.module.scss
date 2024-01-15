@@ -57,29 +57,28 @@ $color-light: #9D9D9D;
     width: 32px;
     height: 32px;
     cursor: pointer;
+    transition: background 0.5s ease;
 
-    &-follow {
+    &-follow_on {
+      background: url('../../../public/mainIconFollow.svg') center/contain no-repeat;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    &-follow_off {
       background: url('../../../public/mainIconUnFollow.svg') center/contain no-repeat;
       position: absolute;
       top: 0;
       left: 0;
-      width: 32px;
-      height: 32px;
-      cursor: pointer;
-    }
-  
-    &-un_add {
-      cursor: pointer;
-      background: url('../../../public/mainIconPlus.svg') center/contain no-repeat;
-      width: 32px;
-      height: 32px;
     }
 
-    &-add {
-      cursor: pointer;
+    &-add_on {
       background: url('../../../public/mainIconAdd.svg') center/contain no-repeat;
-      width: 32px;
-      height: 32px;
+    }
+  
+    &-add_off {
+      background: url('../../../public/mainIconUnAdd.svg') center/contain no-repeat;
     }
   }
 }

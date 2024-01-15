@@ -1,4 +1,4 @@
-function Header() {
+function Header(proops) {
   return (
     <header className="tmpl--header">
       <div className="tmpl--header-left">
@@ -14,7 +14,7 @@ function Header() {
       </div>
       <nav className="tmpl--header-right">
         <ul className="tmpl--header-right-menu">
-          <li className="tmpl--header-right-list">
+          <li onClick={proops.onClickOpenShopCart} className="tmpl--header-right-list">
             <img className="tmpl--header-right-icon" src="./headerIcon1.svg" alt="icon" />
             <p>1205 руб.</p>
           </li>

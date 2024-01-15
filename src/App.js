@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Header from "./components/Header/Header";
 import ProductCard from "./components/ProductCard";
 import ShopCart from "./components/ShopCart/ShopCart";
@@ -22,12 +23,14 @@ const infoProductCards = [
 
 function App() {
 
+  const [shortCartOpened, setShortCartOpened] = useState(false)
+
   return (
     <div className="tmpl--wrapper">
 
-      <ShopCart />
+      {shortCartOpened && <ShopCart onClickCloseShopCart={() => setShortCartOpened(false)} />}
 
-      <Header />
+      <Header onClickOpenShopCart={() => setShortCartOpened(true)} />
 
       <main className="tmpl--main">
         <div className="tmpl--main-up">
@@ -46,8 +49,6 @@ function App() {
               title={el.title} 
               price={el.price} 
               imageUrl={el.imageUrl} 
-              onClickFollow={() => console.log('follow')} 
-              // onClickAdd={() => ""} 
               />
             ))
           }

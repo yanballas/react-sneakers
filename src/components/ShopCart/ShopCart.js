@@ -1,13 +1,13 @@
-function ShopCart() {
+function ShopCart(proops) {
   return (
-    <div style={{display: 'none'}} className="tmpl--cart">
+    <div className="tmpl--cart">
       <div className="tmpl--cart-orders">
         <div className="tmpl--cart-orders-first">
           <div className="tmpl--cart-orders-up">
             <h3 className="tmpl--cart-title">
                 Корзина
             </h3>
-            <button className="tmpl_close-btn"></button>
+            <button onClick={proops.onClickCloseShopCart} className="tmpl_close-btn"></button>
           </div>
           <ul className="tmpl--cart-items">
             <li className="tmpl--cart-item">
