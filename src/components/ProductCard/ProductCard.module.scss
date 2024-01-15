@@ -22,15 +22,6 @@ $color-light: #9D9D9D;
     width: 100%;
   }
 
-  &-follow {
-    width: 32px;
-    height: 32px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    cursor: pointer;
-  }
-
   &-title {
     font-size: 14px;
     line-height: 120%;
@@ -63,9 +54,32 @@ $color-light: #9D9D9D;
   }
 
   &-button {
-    cursor: pointer;
-    background: url('../../../public/mainIconPlus.svg') center/contain no-repeat;
     width: 32px;
     height: 32px;
+    cursor: pointer;
+
+    &-follow {
+      background: url('../../../public/mainIconUnFollow.svg') center/contain no-repeat;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+    }
+  
+    &-un_add {
+      cursor: pointer;
+      background: url('../../../public/mainIconPlus.svg') center/contain no-repeat;
+      width: 32px;
+      height: 32px;
+    }
+
+    &-add {
+      cursor: pointer;
+      background: url('../../../public/mainIconAdd.svg') center/contain no-repeat;
+      width: 32px;
+      height: 32px;
+    }
   }
 }

@@ -1,12 +1,19 @@
+import { useState } from 'react';
 import styles from './ProductCard.module.scss'
 
 function ProductCard( proops ) {
+
+  const [isAddBtn, setIsAddBtn] = useState(false);
+
+  const handleAdd = () => {
+    setIsAddBtn(!isAddBtn)
+  }
 
   return (
     <li className={styles.card}>
       <div className={styles["card-product"]}>
         <img className={styles["card-pic"]} src={proops.imageUrl} alt="product" />
-        <img className={styles["card-follow"]} src="./mainIconUnFollow.svg" alt="follow" />
+        <button onClick={proops.onClickFollow} className={styles["card-button-follow"]} src="./mainIconUnFollow.svg" alt="follow" />
       </div>
       <h4 className={styles["card-title"]}>
         {proops.title}
@@ -16,7 +23,7 @@ function ProductCard( proops ) {
           <p className={styles["card-price"]}>Цена:</p>
           <p><span className={styles["card-price-number"]}>{proops.price}</span></p>
         </div>
-        <button onClick={proops.onClick} type="button" className={styles["card-button"]}>
+        <button onClick={handleAdd} type="button" className={`${!isAddBtn ? styles["card-button-un_add"] : styles["card-button-add"]}`}>
         </button>
       </div>
     </li>

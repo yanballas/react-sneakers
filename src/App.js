@@ -21,6 +21,7 @@ const infoProductCards = [
 ]
 
 function App() {
+
   return (
     <div className="tmpl--wrapper">
 
@@ -45,7 +46,8 @@ function App() {
               title={el.title} 
               price={el.price} 
               imageUrl={el.imageUrl} 
-              onClick={() => console.log(el)} 
+              onClickFollow={() => console.log('follow')} 
+              // onClickAdd={() => ""} 
               />
             ))
           }
