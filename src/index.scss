@@ -299,11 +299,6 @@ body {
 
 @media (hover: hover) {
 
-  .tmpl--main-card:hover {
-    box-shadow: 0px 14px 30px 0px rgba(0, 0, 0, 0.05);
-    transform:  translateY(-5px);
-  }
-
   .tmpl_close-btn:hover {
       opacity: 1;
   }
@@ -320,11 +315,6 @@ body {
 }
 
 @media (hover: none) {
-  
-  .tmpl--main-card:active {
-    box-shadow: 0px 14px 30px 0px rgba(0, 0, 0, 0.05);
-    transform:  translateY(-5px);
-  }
 
   .tmpl_close-btn:active {
     opacity: 1;

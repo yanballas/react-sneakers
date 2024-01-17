@@ -14,10 +14,10 @@ function Header(proops) {
       </div>
       <nav className="tmpl--header-right">
         <ul className="tmpl--header-right-menu">
-          <li onClick={proops.onClickOpenShopCart} className="tmpl--header-right-list">
+          <button onClick={proops.onClickOpenShopCart} className="tmpl--header-right-list">
             <img className="tmpl--header-right-icon" src="./headerIcon1.svg" alt="icon" />
             <p>1205 руб.</p>
-          </li>
+          </button>
           <li className="tmpl--header-right-list">
             <img className="tmpl--header-right-icon" src="./headerIcon2.svg" alt="icon" />
             <p>Закладки</p>

@@ -1,34 +1,49 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "./components/Header/Header";
 import ProductCard from "./components/ProductCard";
 import ShopCart from "./components/ShopCart/ShopCart";
 
-const infoProductCards = [
-  {
-    title: 'Мужские Кроссовки Nike Blazer Mid Suede',
-    price: 12999,
-    imageUrl: './cardItem1.jpg'
-  },
-  {
-    title: 'Мужские Кроссовки Nike Air Max 270',
-    price: 16999,
-    imageUrl: './cardItem2.jpg'
-  },
-  {
-    title: 'Мужские Кроссовки Nike Blazer Mid Suede',
-    price: 8499,
-    imageUrl: './cardItem3.jpg'
-  },
-]
 
 function App() {
-
+  
+  const [productCards, setProductCards] = useState([])
+  const [cartItems, setCartItems] = useState([])
   const [shortCartOpened, setShortCartOpened] = useState(false)
+
+  useEffect(() => {
+    let controller = new AbortController();
+    const requestProducts = () => {
+      fetch('http://localhost:8000/products').then(response => {
+        return response.json()
+      }).then(json => {
+        setProductCards(json)
+      })
+    }
+    requestProducts()
+    return () => controller?.abort();
+  }, [])
+
+  const onProductToCart = (el) => {
+
+    let flag = false
+    cartItems.forEach(item => {
+      if (item.id === el.id) {
+        flag = !flag
+      }
+    })
+    if (flag) {
+      setCartItems(state => state.filter(val => val.id !== el.id))
+    } else {
+      setCartItems([...cartItems, el])
+    }
+
+
+  }
 
   return (
     <div className="tmpl--wrapper">
 
-      {shortCartOpened && <ShopCart onClickCloseShopCart={() => setShortCartOpened(false)} />}
+      {shortCartOpened && <ShopCart cartItems={cartItems}onClickCloseShopCart={() => setShortCartOpened(false)} />}
 
       <Header onClickOpenShopCart={() => setShortCartOpened(true)} />
 
@@ -44,11 +59,12 @@ function App() {
         </div>
         <ul className="tmpl--main-cards">
           {
-            infoProductCards.map((el) => (
+            productCards.map((el) => (
               <ProductCard 
               title={el.title} 
               price={el.price} 
-              imageUrl={el.imageUrl} 
+              imageUrl={el.imageUrl}
+              onAddCart={() => onProductToCart(el)}
               />
             ))
           }

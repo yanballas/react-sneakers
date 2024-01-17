@@ -1,4 +1,4 @@
-function ShopCart(proops) {
+function ShopCart({onClickCloseShopCart, cartItems = []}) {
   return (
     <div className="tmpl--cart">
       <div className="tmpl--cart-orders">
@@ -7,25 +7,21 @@ function ShopCart(proops) {
             <h3 className="tmpl--cart-title">
                 Корзина
             </h3>
-            <button onClick={proops.onClickCloseShopCart} className="tmpl_close-btn"></button>
+            <button onClick={onClickCloseShopCart} className="tmpl_close-btn"></button>
           </div>
           <ul className="tmpl--cart-items">
-            <li className="tmpl--cart-item">
-                <img className="tmpl--cart-item-pic" src="./cardItem1.jpg" alt="product" />
-                <div className="tmpl--cart-item-text">
-                    <h5 className="tmpl--cart-item-title">Мужские Кроссовки Nike Air Max 270</h5>
-                    <span className="tmpl--cart-item-price">12 999 руб.</span>
-                </div>
-                <button className="tmpl_close-btn"></button>
-            </li>
-            <li className="tmpl--cart-item">
-                <img className="tmpl--cart-item-pic" src="./cardItem1.jpg" alt="product" />
-                <div className="tmpl--cart-item-text">
-                    <h5 className="tmpl--cart-item-title">Мужские Кроссовки Nike Air Max 270</h5>
-                    <span className="tmpl--cart-item-price">12 999 руб.</span>
-                </div>
-                <button className="tmpl_close-btn"></button>
-            </li>
+            {
+              cartItems.map((el) => (
+                <li className="tmpl--cart-item">
+                  <img className="tmpl--cart-item-pic" src={el?.imageUrl} alt="product" />
+                  <div className="tmpl--cart-item-text">
+                      <h5 className="tmpl--cart-item-title">{el?.title}</h5>
+                      <span className="tmpl--cart-item-price">{el?.price}</span>
+                  </div>
+                  <button className="tmpl_close-btn"></button>
+              </li>
+              ))
+            }
           </ul>
         </div>
         <div className="tmpl--cart-orders-second">

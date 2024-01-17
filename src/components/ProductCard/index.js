@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styles from './ProductCard.module.scss'
 import classNames from 'classnames';
 
-function ProductCard( proops ) {
+function ProductCard( {imageUrl, title, price, onAddCart} ) {
 
   const [isFollowBtn, setIsFollowBtn] = useState(false);
   const [isAddBtn, setIsAddBtn] = useState(false);
@@ -12,13 +12,14 @@ function ProductCard( proops ) {
   }
 
   const handleAdd = () => {
+    onAddCart({ imageUrl, title, price })
     setIsAddBtn(!isAddBtn)
   }
 
   return (
     <li className={classNames(styles.card)}>
       <div className={classNames(styles["card-product"])}>
-        <img className={classNames(styles["card-pic"])} src={proops.imageUrl} alt="product" />
+        <img className={classNames(styles["card-pic"])} src={imageUrl} alt="product" />
         <button onClick={handleFollow} className={classNames({
           [styles["card-button"]]: true,
           [styles["card-button-follow_off"]]: !isFollowBtn,
@@ -27,12 +28,12 @@ function ProductCard( proops ) {
         ></button>
       </div>
       <h4 className={classNames(styles["card-title"])}>
-        {proops.title}
+        {title}
       </h4>
       <div className={classNames(styles["card-order"])}>
         <div className={classNames(styles["card-order-text"])}>
           <p className={classNames(styles["card-price"])}>Цена:</p>
-          <p><span className={classNames(styles["card-price-number"])}>{proops.price}</span></p>
+          <p><span className={classNames(styles["card-price-number"])}>{price}</span></p>
         </div>
         <button onClick={handleAdd} type="button" className={classNames({
           [styles["card-button"]]: true,
